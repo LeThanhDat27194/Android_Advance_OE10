@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int REQUEST_READ_EXTERNAL = 1;
+    private static final int REQUEST_READ_EXTERNAL = 1;
     private ArrayList<Bitmap> mImageBitmaps;
     private RecyclerView mRecyclerGallery;
 
@@ -58,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
     private void getPathFromExternal() {
         mImageBitmaps = new ArrayList<>();
         File extStore = Environment.getExternalStorageDirectory();
-//        for (int i = 0; i < extStore.length(); i++) {
-//            Log.d("Dulieu", "getPathFromExternal: "+extStore.getAbsoluteFile().getPath());
-//        }
         String path = extStore.getPath()+"/DCIM/Camera/" ;
         File file = new File(path);
         File f[] = file.listFiles();
@@ -69,13 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-//        for (int i = 0; i < f.length; i++) {
-//            mImageBitmaps.add(BitmapFactory.decodeFile(f[i].getPath()));
-//        }
 
         for (File aF : f) {
-
-//            Log.d("Dulieu", "getPathFromExternal: "+aF.getPath());
             mImageBitmaps.add(BitmapFactory.decodeFile(aF.getPath()));
         }
 
